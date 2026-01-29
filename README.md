@@ -1,0 +1,5 @@
+MovieDB is a simple iOS application built using SwiftUI and only with programming by also deleting main and launch screen from the sttoryboard that displays a list of movies in a UITableView. Each row presents essential movie details such as the movie title, rating, release date, and an icon/image, providing users with a clear and structured overview. The application demonstrates proper use of table view data sources, delegates, custom cells, and model-driven UI updates.
+
+On selecting a movie from the list, the app navigates to a detail screen using a navigation controller, where additional information such as the movie’s description is displayed. This project showcases core iOS development concepts including view controller navigation, passing data between screens, reusable table view cells, and clean separation of data using models. MovieDB serves as a foundational example of building a multi-screen iOS application with smooth user interaction and structured UI flow.
+
+<img width="1206" height="2622" alt="image" src="https://github.com/user-attachments/assets/8f286485-cf2b-48ec-91ce-338c01104d1e" />
