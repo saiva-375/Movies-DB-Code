@@ -31,7 +31,7 @@ class MovieCell: UITableViewCell {
         posterImage?.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel = UILabel()
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel?.textColor = .black
         titleLabel?.textAlignment = .center
         titleLabel?.translatesAutoresizingMaskIntoConstraints = false
@@ -54,28 +54,28 @@ class MovieCell: UITableViewCell {
             contentView.addSubview(rating)
             
             NSLayoutConstraint.activate([
-                poster.widthAnchor.constraint(equalToConstant: 50),
-                poster.heightAnchor.constraint(equalToConstant: 10),
-                poster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                poster.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                
-                title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 10),
-                title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-//                title.widthAnchor.constraint(equalToConstant: 50),
-//                title.heightAnchor.constraint(equalToConstant: 10),
-                
-                rating.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 10),
-                rating.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                rating.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
-                rating.bottomAnchor.constraint(equalTo: releaseDate.topAnchor, constant: -5),
-//                rating.widthAnchor.constraint(equalToConstant: 50),
-//                rating.heightAnchor.constraint(equalToConstant: 10),
-                
-                releaseDate.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 10),
-                releaseDate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                releaseDate.topAnchor.constraint(equalTo: rating.bottomAnchor, constant: 5),
-                releaseDate.bottomAnchor.constraint(equalToSystemSpacingBelow: contentView.bottomAnchor, multiplier: 1)
+                // Poster
+                    poster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+                    poster.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+                    poster.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -12),
+                    poster.widthAnchor.constraint(equalToConstant: 60),
+                    poster.heightAnchor.constraint(equalToConstant: 90),
+
+                    // Title
+                    title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 12),
+                    title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+                    title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+
+                    // Rating
+                    rating.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+                    rating.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+                    rating.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
+
+                    // Release Date
+                    releaseDate.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+                    releaseDate.trailingAnchor.constraint(equalTo: poster.trailingAnchor),
+                    releaseDate.topAnchor.constraint(equalTo: rating.bottomAnchor, constant: 6),
+                    releaseDate.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -12)
             ])
                 
         }

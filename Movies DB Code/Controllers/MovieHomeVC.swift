@@ -32,17 +32,12 @@ class MovieHomeVC: UIViewController {
             NSLayoutConstraint.activate([
                 movieTV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                 movieTV.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                movieTV.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
                 movieTV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                movieTV.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
-                movieTV.widthAnchor.constraint(equalTo: view.widthAnchor),
-                movieTV.heightAnchor.constraint(equalTo: view.heightAnchor)
+                movieTV.heightAnchor.constraint(equalToConstant: 110)
             ])
         }
-        
-        
     }
-
-
 }
 
 //MARK: Tableview Datasource
