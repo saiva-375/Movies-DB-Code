@@ -27,7 +27,7 @@ class MovieCell: UITableViewCell {
         posterImage = UIImageView()
         posterImage?.image = UIImage(systemName: "film")
         posterImage?.tintColor = UIColor(red: 7/255, green: 80/255, blue: 86/255, alpha: 1.0)
-        posterImage?.contentMode = .scaleAspectFill
+        posterImage?.contentMode = .scaleAspectFit
         posterImage?.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel = UILabel()
@@ -55,11 +55,10 @@ class MovieCell: UITableViewCell {
             
             NSLayoutConstraint.activate([
                 // Poster
-                    poster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-                    poster.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-                    poster.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -12),
-                    poster.widthAnchor.constraint(equalToConstant: 60),
-                    poster.heightAnchor.constraint(equalToConstant: 90),
+                    poster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                    poster.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                    poster.widthAnchor.constraint(equalToConstant: 70),
+                    poster.heightAnchor.constraint(equalToConstant: 70),
 
                     // Title
                     title.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 12),
@@ -67,15 +66,14 @@ class MovieCell: UITableViewCell {
                     title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
 
                     // Rating
-                    rating.leadingAnchor.constraint(equalTo: title.leadingAnchor),
+                    rating.leadingAnchor.constraint(equalTo: poster.trailingAnchor, constant: 12),
                     rating.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-                    rating.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
+                    rating.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
 
-                    // Release Date
+                    releaseDate.topAnchor.constraint(equalTo: rating.bottomAnchor, constant: 5),
                     releaseDate.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-                    releaseDate.trailingAnchor.constraint(equalTo: poster.trailingAnchor),
-                    releaseDate.topAnchor.constraint(equalTo: rating.bottomAnchor, constant: 6),
-                    releaseDate.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -12)
+                    releaseDate.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+                    releaseDate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
             ])
                 
         }
@@ -84,7 +82,7 @@ class MovieCell: UITableViewCell {
     func setDataInCells(movie: MovieDetails) {
         titleLabel?.text = movie.title ?? ""
         posterImage?.image = UIImage(systemName: movie.posterPath ?? "")
-        ratingLabel?.text? = "Rating: \(movie.rating ?? 0.0)"
+        ratingLabel?.text = "Rating: \(movie.rating ?? 0.0)"
         releaseDateLabel?.text = "Released: \(movie.releaseDate ?? "")"
     }
 }

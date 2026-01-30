@@ -23,6 +23,8 @@ class MovieHomeVC: UIViewController {
         
         moviesTableView = UITableView()
         moviesTableView?.dataSource = self
+        moviesTableView?.delegate = self
+        moviesTableView?.estimatedRowHeight = 100
         moviesTableView?.translatesAutoresizingMaskIntoConstraints = false
         moviesTableView?.register(MovieCell.self, forCellReuseIdentifier: "MovieCell")
         
@@ -33,8 +35,7 @@ class MovieHomeVC: UIViewController {
                 movieTV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                 movieTV.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
                 movieTV.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                movieTV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                movieTV.heightAnchor.constraint(equalToConstant: 110)
+                movieTV.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         }
     }
@@ -48,9 +49,16 @@ extension MovieHomeVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell
         let movie = movies[indexPath.row].details
-        cell.setDataInCells(movie: movie)
-        return cell
+        cell?.setDataInCells(movie: movie)
+        return cell ?? UITableViewCell()
+    }
+}
+
+extension MovieHomeVC: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
